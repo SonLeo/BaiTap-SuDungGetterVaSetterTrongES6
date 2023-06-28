@@ -1,18 +1,18 @@
 class Person {
     constructor(name) {
-        this.name = name;
+        this._name = name;
     }
 
-    getName() {
-        return this.name;
+    get name() {
+        return this._name;
     }
 
-    setName(newName) {
-        this.name = newName;
+    set name(newName) {
+        this._name = newName;
     }
 
     walk() {
-        console.log(`${this.name} is walking.`);
+        console.log(`${this._name} is walking.`);
     }
 }
 
@@ -31,18 +31,20 @@ class Programer extends Person {
     }
 
     writeCode() {
-        console.log(`${this.name} is writing code in ${this.programmingLanguage}.`);
+        console.log(`${this._name} is writing code in ${this.programmingLanguage}.`);
     }
 }
 
 // Khai báo các đối tượng thuộc lớp Programmer và gọi các hàm của lớp Person và Programmer
 const person = new Person('Son Trinh');
-console.log(person.getName());
-console.log(person.setName('Sơn Trịnh'));
+console.log(person.name);
+person.name = 'Sơn Trịnh';
+console.log(person.name);
 person.walk();
 
-const programer = new Programer('Son', 'JavaScript');
-console.log(programer.getName());
-console.log(programer.setName('Son Trinh'));
+const programer = new Programer('Thai Son', 'JavaScript');
+console.log(programer.name);
+programer.name = 'Thái Sơn';
+console.log(programer.name);
 programer.walk();
 programer.writeCode();
